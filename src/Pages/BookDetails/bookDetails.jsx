@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addToStoredDB } from '../../Utility/addToDb';
 
 const BookDetails = () => {
     const data =useLoaderData();
@@ -7,7 +8,13 @@ const BookDetails = () => {
     console.log(data,bookId);
     const singleBookData = data.find(book => book.bookId == bookId);
     console.log(singleBookData);
-    const {bookName,image,author,review,category,yearOfPublishing,publisher,totalPages,rating} =singleBookData
+    const {bookName,image,author,review,category,yearOfPublishing,publisher,totalPages,rating} =singleBookData;
+
+
+    const handleMarkAsRead = (id) => {
+        addToStoredDB(id)
+
+    }
 
 
     return (
@@ -39,7 +46,7 @@ const BookDetails = () => {
           </div>
 
          <div className="flex gap-4 mt-4">
-            <button className="btn btn-primary">Mark asRead</button>
+            <button onClick={()=>handleMarkAsRead( bookId) } className="btn btn-primary">Mark asRead</button>
             <button className="btn btn-secondary">Add to wishlist</button>
           </div>
         </div>
