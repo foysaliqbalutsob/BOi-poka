@@ -1,9 +1,40 @@
 import React from 'react';
+import { NavLink } from 'react-router'; 
+
+
+
+
 
 const Navbar = () => {
     const links = <>
-    <li className='text-xl font-bold mr-3' >Home</li>
-    <li className='text-xl font-bold mr-3' >About</li>
+     <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? 'text-cyan-400 font-bold border-b-4 border-amber-300'
+              : 'text-cyan-400 font-bold'
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive
+              ? 'text-cyan-400 font-bold border-b-4 border-amber-300'
+              : 'text-cyan-400 font-bold'
+          }
+        >
+          About
+        </NavLink>
+      </li>
+   
+    
+   
 
     </>
     return (
